@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Novena Tracker — Redirecting...</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      background: #F5F2ED;
+      color: #2C2C2C;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      text-align: center;
+      padding: 24px;
+    }
+    .container { max-width: 400px; }
+    h1 { font-size: 24px; margin-bottom: 12px; }
+    p { font-size: 16px; color: #8A8A8A; line-height: 1.5; }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 32px;
+      background: #C4704B;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Novena Tracker</h1>
+    <p>Redirecting you to the app...</p>
+    <p id="fallback" style="display:none;">
+      If the app did not open automatically, tap the button below.
+    </p>
+    <a id="open-app" style="display:none;" href="#">Open Novena Tracker</a>
+  </div>
+
+  <script>
+    // Supabase appends tokens as a hash fragment: #access_token=...&type=recovery
+    // We need to forward those to the app's deep link
+    var hash = window.location.hash;
+    var params = new URLSearchParams(window.location.search);
+
+    // Supabase may use either hash or query params depending on flow
+    var fragment = hash || '';
+    var query = window.location.search || '';
+
+    // Build the deep link
+    var deepLink = 'novenatracker://reset-password' + fragment + query;
+
+    // Try to open the app immediately
+    window.location.href = deepLink;
+
+    // Show fallback button after 2 seconds if the app didn't open
+    setTimeout(function() {
+      document.getElementById('fallback').style.display = 'block';
+      var btn = document.getElementById('open-app');
+      btn.style.display = 'inline-block';
+      btn.href = deepLink;
+    }, 2000);
+  </script>
+</body>
+</html>
