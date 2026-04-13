@@ -264,7 +264,7 @@
 
     .phone-stack {
       position: relative;
-      width: min(100%, 430px);
+      width: min(100%, 390px);
       aspect-ratio: 1242 / 2688;
     }
 
@@ -455,11 +455,12 @@
     }
 
     .showcase-main figure {
-      margin: 0;
-      overflow: hidden;
-      border-radius: 28px;
-      background: linear-gradient(180deg, var(--warm-tint), var(--sage-faint));
-    }
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 28px;
+    background: linear-gradient(180deg, var(--warm-tint), var(--sage-faint));
+    max-width: 320px;
+  }
 
     .showcase-main img {
       width: 100%;
@@ -494,9 +495,10 @@
     }
 
     .screenshot-card img {
-      width: 100%;
-      background: linear-gradient(180deg, var(--warm-tint), #fff);
-    }
+    width: 86%;
+    margin: 0 auto;
+    background: linear-gradient(180deg, var(--warm-tint), #fff);
+  }
 
     .screenshot-copy {
       padding: 14px 16px 18px;
@@ -645,7 +647,7 @@
       }
 
       .phone-stack {
-        width: min(100%, 380px);
+        width: min(100%, 350px);
       }
     }
 
